@@ -149,7 +149,7 @@ let fetchNyaaRssTorrent2 = async (query, type) => {
 };
 
 let hosts = [];
-const raw_content = fs.readFileSync(path.join(__dirname, 'servers.txt'));
+const raw_content = require("fs").readFileSync("./servers.txt");
 let content = Buffer.isBuffer(raw_content)
   ? raw_content.toString()
   : raw_content;
