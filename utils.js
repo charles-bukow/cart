@@ -1,3 +1,4 @@
+const path = require('path');
 require("dotenv").config();
 const parseTorrent = require("parse-torrent");
 const fetch = require("node-fetch");
@@ -148,8 +149,7 @@ let fetchNyaaRssTorrent2 = async (query, type) => {
 };
 
 let hosts = [];
-
-const raw_content = require("fs").readFileSync("./servers.txt");
+const raw_content = fs.readFileSync(path.join(__dirname, 'servers.txt'));
 let content = Buffer.isBuffer(raw_content)
   ? raw_content.toString()
   : raw_content;
@@ -163,7 +163,6 @@ hosts = content
       apiKey: el.split("|").pop(),
     };
   });
-
 hosts = hosts.filter((el) => !!el);
 
 // const api = "http://localhost:3009/torrent";
